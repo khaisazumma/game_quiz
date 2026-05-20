@@ -206,4 +206,5 @@
     content: '';
     @apply absolute inset-0 bg-black/0 pointer-events-none;
   }
+  
 }

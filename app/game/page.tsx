@@ -29,16 +29,12 @@ export default function GamePage() {
   const isLastQuestion = currentIndex === heroes.length - 1;
 
   const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [isTimeout, setIsTimeout] = useState(false);
 
-  // 🔒 IMPORTANT LOCK
   const [lockInput, setLockInput] = useState(false);
-
-  // EFFECTS
   const [shake, setShake] = useState(false);
   const [flash, setFlash] = useState(false);
 
@@ -46,78 +42,69 @@ export default function GamePage() {
 
   // RESET SOAL
   useEffect(() => {
-    if (currentHero) {
-      const options = [...currentHero.options].sort(
-        () => Math.random() - 0.5
-      );
+    if (!currentHero) return;
 
-      setShuffledOptions(options);
+    const options = [...currentHero.options].sort(
+      () => Math.random() - 0.5
+    );
 
-      setSelectedAnswer(null);
-      setShowResult(false);
-      setIsCorrect(false);
-      setShowConfetti(false);
-      setIsTimeout(false);
-      setShake(false);
-      setFlash(false);
-      setLockInput(false);
-      setTimeLeft(TOTAL_TIME);
-    }
+    setShuffledOptions(options);
+
+    setShowResult(false);
+    setIsCorrect(false);
+    setShowConfetti(false);
+    setIsTimeout(false);
+    setLockInput(false);
+    setShake(false);
+    setFlash(false);
+    setTimeLeft(TOTAL_TIME);
   }, [currentHero]);
 
-  // AUDIO
+  // SOUND
   const playSound = (
-    soundName: 'click' | 'correct' | 'wrong' | 'timeout'
+    type: 'click' | 'correct' | 'wrong' | 'timeout'
   ) => {
-    if (soundEnabled && typeof window !== 'undefined') {
-      try {
-        const audio = new Audio(`/sounds/${soundName}.mp3`);
-        audio.play().catch(() => {});
-      } catch (e) {}
-    }
+    if (!soundEnabled) return;
+
+    try {
+      const audio = new Audio(`/sounds/${type}.mp3`);
+      audio.play().catch(() => {});
+    } catch {}
   };
 
-  // TIMEOUT (FIXED TOTAL LOCK)
+  // TIMEOUT
   const handleTimeout = useCallback(() => {
     setLockInput(true);
-
     setIsTimeout(true);
     setShake(true);
     setFlash(true);
 
     playSound('timeout');
 
-    // ❌ TIDAK ADA submitAnswer
-
     setTimeout(() => {
+      setLockInput(false);
       setIsTimeout(false);
       setShake(false);
       setFlash(false);
-      setLockInput(false);
 
-      if (isLastQuestion) {
-        router.push('/results');
-      } else {
-        nextQuestion();
-      }
+      if (isLastQuestion) router.push('/results');
+      else nextQuestion();
     }, 900);
-  }, [isLastQuestion, router, nextQuestion]);
+  }, [isLastQuestion, nextQuestion, router]);
 
-  // TIMER (ANTI DOUBLE TRIGGER)
+  // TIMER
   useEffect(() => {
     if (showResult || lockInput) return;
 
     if (timeLeft > 0) {
       const timer = setTimeout(() => {
-        setTimeLeft((prev) => Math.max(prev - 0.1, 0));
+        setTimeLeft((t) => Math.max(t - 0.1, 0));
       }, 100);
 
       return () => clearTimeout(timer);
     }
 
-    if (timeLeft <= 0 && !lockInput) {
-      handleTimeout();
-    }
+    if (timeLeft <= 0) handleTimeout();
   }, [timeLeft, showResult, lockInput, handleTimeout]);
 
   // ANSWER
@@ -126,29 +113,33 @@ export default function GamePage() {
 
     const correct = answer === currentHero.answer;
 
-    setSelectedAnswer(answer);
     setShowResult(true);
     setIsCorrect(correct);
 
-    if (correct) {
-      setShowConfetti(true);
-      playSound('correct');
-    } else {
-      playSound('wrong');
-    }
+if (correct) {
+  setShowConfetti(true);
+  playSound('correct');
+} else {
+  setFlash(true);
+  setShake(true);
+  playSound('wrong');
+
+  // matikan efek setelah sebentar (biar seperti timeout)
+  setTimeout(() => {
+    setFlash(false);
+    setShake(false);
+  }, 600);
+}
 
     submitAnswer(answer, TOTAL_TIME - timeLeft);
   };
 
   // NEXT
-  const handleNextQuestion = () => {
+  const handleNext = () => {
     playSound('click');
 
-    if (isLastQuestion) {
-      router.push('/results');
-    } else {
-      nextQuestion();
-    }
+    if (isLastQuestion) router.push('/results');
+    else nextQuestion();
   };
 
   if (!currentHero || heroes.length === 0) {
@@ -160,12 +151,9 @@ export default function GamePage() {
   }
 
   return (
-    <main
-      className={`min-h-screen bg-game relative overflow-hidden transition-all duration-200
-        ${shake ? 'animate-[shake_0.3s_ease-in-out_3]' : ''}
-      `}
-    >
-      {/* 🔴 RED FLASH */}
+    <main className={`min-h-screen relative overflow-hidden bg-game ${shake ? 'shake' : ''}`}>
+
+      {/* FLASH */}
       <AnimatePresence>
         {flash && (
           <motion.div
@@ -177,89 +165,103 @@ export default function GamePage() {
         )}
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-black/5 pointer-events-none" />
-
       <Confetti active={showConfetti && isCorrect} />
 
       <div className="relative z-10 max-w-[900px] mx-auto px-2 py-2">
 
-        {/* HEADER */}
-        <div className="flex items-center justify-between mb-3 px-1 md:px-0">
-          <div className="-ml-16 md:-ml-24 lg:-ml-32">
-            <Link href="/">
-              <button className="p-3 rounded-full bg-orange-500 text-white">
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-            </Link>
-          </div>
+{/* HEADER */}
+<div className="flex items-center justify-between mb-6 px-0 md:px-2 pt-3 w-full">
+  
+  {/* LEFT - BACK */}
+  <div className="flex items-start justify-start">
+    <Link href="/">
+      <div className="cursor-pointer">
+        <ScoreBadge
+          label="Back"
+          value="←"
+        />
+      </div>
+    </Link>
+  </div>
 
-          <div className="glossy-card px-4 py-2">
-            <p className="font-bold text-orange-600">
-              SOAL {currentIndex + 1} / {heroes.length}
-            </p>
-          </div>
+  {/* CENTER - SOAL */}
+  <div className="flex justify-center">
+    <ScoreBadge
+      label="Soal"
+      value={`${currentIndex + 1} / ${heroes.length}`}
+    />
+  </div>
 
-          <div className="flex gap-2">
-            <ScoreBadge label="Poin" value={score} />
-            <ScoreBadge label="Waktu" value={`${Math.ceil(timeLeft)}s`} />
-          </div>
-        </div>
+  {/* RIGHT - SCORE */}
+  <div className="flex items-end justify-end gap-2">
+    <ScoreBadge label="Poin" value={score} />
+    <ScoreBadge label="Waktu" value={`${Math.ceil(timeLeft)}s`} />
+  </div>
+
+</div>
 
         {/* MAIN */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
 
-          {/* IMAGE */}
+          {/* IMAGE (FIXED BORDER PRODUCTION SAFE) */}
           <div className="flex justify-center">
-            <div className="w-[300px] h-[300px] bg-yellow-200 rounded-xl overflow-hidden">
-              {currentHero.image ? (
-                <img
-                  src={currentHero.image}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="flex items-center justify-center h-full">
-                  No Image
-                </div>
-              )}
+            <div className="w-[300px] h-[300px] rounded-2xl overflow-hidden border-4 border-[#8b6f47] shadow-xl bg-white flex items-center justify-center">
+              <img
+                src={currentHero.image}
+                alt={currentHero.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.currentTarget.src =
+                    'https://via.placeholder.com/300x300?text=No+Image');
+                }}
+              />
             </div>
           </div>
 
           {/* RIGHT */}
           <div className="w-full max-w-[420px] mx-auto">
 
-            <h2 className="text-center font-bold text-orange-700 mb-4">
-              SIAPAKAH AKU?
-            </h2>
+<h2
+  className="text-center font-baloo2 text-orange-700 mb-4 text-2xl md:text-3xl font-black"
+  style={{
+    WebkitTextStroke: '1px white',
+    textShadow: '0 3px 0 #92400e, 0 5px 10px rgba(0,0,0,0.15)',
+  }}
+>
+  SIAPAKAH AKU?
+</h2>
 
-            <div className="space-y-2">
+            {/* OPTIONS (FIXED PRODUCTION LAYOUT) */}
+            <div className="flex flex-col gap-3 w-full">
               {shuffledOptions.map((option, idx) => (
                 <button
-                  key={option}
+                  key={`${option}-${idx}`}
                   onClick={() => handleAnswerSelect(option)}
                   disabled={showResult || lockInput}
-                  className="w-full py-2 rounded-full bg-orange-500 text-white font-bold hover:scale-105 transition"
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-orange-500 text-white font-bold shadow-md transition active:scale-95 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {ANSWER_OPTIONS[idx]} - {option}
+                  <div className="w-8 h-8 flex items-center justify-center bg-white text-orange-500 rounded-full font-bold">
+                    {ANSWER_OPTIONS[idx]}
+                  </div>
+                  <span className="flex-1 text-left">{option}</span>
                 </button>
               ))}
             </div>
 
             {/* RESULT */}
-            <div className="mt-4 min-h-[80px]">
+            <div className="mt-4 min-h-[80px] flex items-center justify-center">
 
               {isTimeout ? (
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1.1, opacity: 1 }}
-                  className="p-4 bg-yellow-300 text-center font-bold rounded-xl"
-                >
-                  ⏰ TIME UP!
-                </motion.div>
+                <div className="w-full p-4 bg-yellow-300 text-center font-bold rounded-xl">
+                  ⏰ WAKTU HABIS!
+                </div>
               ) : showResult ? (
-                <div className="text-center mt-3">
+                <div className="w-full text-center space-y-3">
                   <div
-                    className={`p-3 rounded-xl font-bold ${
-                      isCorrect ? 'bg-green-200' : 'bg-red-200'
+                    className={`p-4 rounded-xl font-bold ${
+                      isCorrect
+                        ? 'bg-green-200 text-green-800'
+                        : 'bg-red-200 text-red-800'
                     }`}
                   >
                     {isCorrect
@@ -268,8 +270,8 @@ export default function GamePage() {
                   </div>
 
                   <button
-                    onClick={handleNextQuestion}
-                    className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-full"
+                    onClick={handleNext}
+                    className="px-6 py-2 bg-blue-500 text-white rounded-full"
                   >
                     {isLastQuestion ? 'LIHAT HASIL' : 'SOAL BERIKUTNYA'}
                   </button>
@@ -281,8 +283,12 @@ export default function GamePage() {
         </div>
       </div>
 
-      {/* SHAKE ANIMATION */}
+      {/* SHAKE */}
       <style jsx global>{`
+        .shake {
+          animation: shake 0.3s ease-in-out 3;
+        }
+
         @keyframes shake {
           0% { transform: translate(0, 0); }
           25% { transform: translate(-5px, 5px); }
@@ -291,6 +297,7 @@ export default function GamePage() {
           100% { transform: translate(0, 0); }
         }
       `}</style>
+
     </main>
   );
 }
