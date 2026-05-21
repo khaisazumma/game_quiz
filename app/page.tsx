@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Character } from '@/components/Character';
-import { Volume2, VolumeX } from 'lucide-react';
-import { Luckiest_Guy } from 'next/font/google';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Character } from "@/components/Character";
+import { Volume2, VolumeX } from "lucide-react";
+import { Luckiest_Guy } from "next/font/google";
 
 /* FONT */
 const luckiestGuy = Luckiest_Guy({
-  subsets: ['latin'],
-  weight: '400',
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export default function Home() {
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   const playSound = () => {
-    if (soundEnabled && typeof window !== 'undefined') {
+    if (soundEnabled && typeof window !== "undefined") {
       try {
-        const audio = new Audio('/sounds/click.mp3');
+        const audio = new Audio("/sounds/click.mp3");
         audio.play().catch(() => {});
       } catch (e) {}
     }
@@ -27,69 +27,54 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full bg-home relative overflow-hidden">
-
       {/* OVERLAY */}
       <div className="absolute inset-0 bg-black/10"></div>
 
-      {/* SOUND BUTTON */}
-      <button
-        onClick={() => setSoundEnabled(!soundEnabled)}
-        className="
-          absolute
-          top-4
-          right-4
-          z-30
-          p-3
-          rounded-full
-          bg-white/90
-          shadow-2xl
-          hover:scale-110
-          transition-all
-        "
-      >
-        {soundEnabled ? (
-          <Volume2 className="w-5 h-5 text-orange-500" />
-        ) : (
-          <VolumeX className="w-5 h-5 text-gray-500" />
-        )}
-      </button>
-
       {/* ================= LOGO AREA ================= */}
-      <div className="absolute top-4 left-4 z-30">
-        <div className="flex items-center gap-3">
-
-          {/* LOGO SEKOLAH */}
+      <div className="absolute top-4 left-0 w-full px-4 z-30 flex justify-between items-center">
+        {/* KIRI - LOGO SEKOLAH */}
+        <div className="flex items-center">
           <img
             src="/logos/logo-sekolah.png"
             alt="SNEMA"
             className="
-              h-[55px]
-              md:h-[70px]
-              object-contain
-              drop-shadow-[0_5px_10px_rgba(0,0,0,0.3)]
-            "
+        h-[55px]
+        md:h-[70px]
+        object-contain
+        drop-shadow-[0_5px_10px_rgba(0,0,0,0.3)]
+      "
           />
+        </div>
 
-          {/* LOGO HJL */}
+        {/* KANAN - LOGO HJL + HARDIKNAS */}
+        <div className="flex items-center gap-3">
           <img
             src="/logos/logo-hjl.png"
             alt="HJL"
             className="
-              h-[50px]
-              md:h-[65px]
-              object-contain
-              drop-shadow-[0_5px_10px_rgba(0,0,0,0.3)]
-            "
+        h-[55px]
+        md:h-[70px]
+        object-contain
+        drop-shadow-[0_5px_10px_rgba(0,0,0,0.3)]
+      "
           />
 
+          <img
+            src="/logos/logo-hardiknas.png"
+            alt="Hardiknas 2026"
+            className="
+        h-[55px]
+        md:h-[70px]
+        object-contain
+        drop-shadow-[0_5px_10px_rgba(0,0,0,0.3)]
+      "
+          />
         </div>
       </div>
 
       {/* ================= MAIN CONTENT ================= */}
       <div className="h-screen w-full flex items-center justify-center relative px-4">
-
         <div className="text-center z-20">
-
           {/* ================= TITLE ================= */}
           <motion.div
             initial={{ opacity: 0, y: -40 }}
@@ -97,7 +82,6 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="mb-6"
           >
-
             {/* PEJUANG */}
             <h1
               className={`
@@ -110,13 +94,13 @@ export default function Home() {
                 select-none
               `}
               style={{
-                color: '#FFB300',
-                WebkitTextStroke: '5px white',
+                color: "#FFB300",
+                WebkitTextStroke: "5px white",
                 textShadow: `
                   0 4px 0 #d97706,
                   0 8px 12px rgba(0,0,0,0.20)
                 `,
-                transform: 'rotate(-2deg)',
+                transform: "rotate(-2deg)",
               }}
             >
               PEJUANG
@@ -134,13 +118,13 @@ export default function Home() {
                 select-none
               `}
               style={{
-                color: '#1565FF',
-                WebkitTextStroke: '5px white',
+                color: "#1565FF",
+                WebkitTextStroke: "5px white",
                 textShadow: `
                   0 4px 0 #003fbd,
                   0 8px 12px rgba(0,0,0,0.20)
                 `,
-                transform: 'rotate(1deg)',
+                transform: "rotate(1deg)",
               }}
             >
               BANGSA
@@ -158,18 +142,17 @@ export default function Home() {
                 select-none
               `}
               style={{
-                color: '#FF3131',
-                WebkitTextStroke: '5px white',
+                color: "#FF3131",
+                WebkitTextStroke: "5px white",
                 textShadow: `
                   0 4px 0 #c11212,
                   0 8px 12px rgba(0,0,0,0.20)
                 `,
-                transform: 'rotate(-1deg)',
+                transform: "rotate(-1deg)",
               }}
             >
               INDONESIA
             </h1>
-
           </motion.div>
 
           {/* ================= PLAY BUTTON ================= */}
@@ -180,7 +163,6 @@ export default function Home() {
             className="mb-6"
           >
             <Link href="/instructions">
-
               <button
                 onClick={playSound}
                 className="
@@ -204,7 +186,6 @@ export default function Home() {
                   duration-150
                 "
               >
-
                 {/* GLOSS */}
                 <div
                   className="
@@ -219,7 +200,6 @@ export default function Home() {
                 />
 
                 <div className="relative flex items-center gap-3">
-
                   {/* PLAY ICON */}
                   <div
                     className="
@@ -235,9 +215,7 @@ export default function Home() {
                       shadow-inner
                     "
                   >
-                    <span className="text-2xl ml-1 text-orange-500">
-                      ▶
-                    </span>
+                    <span className="text-2xl ml-1 text-orange-500">▶</span>
                   </div>
 
                   {/* PLAY TEXT */}
@@ -249,16 +227,13 @@ export default function Home() {
                       text-white
                     `}
                     style={{
-                      textShadow: '0 3px 0 rgba(0,0,0,0.2)',
+                      textShadow: "0 3px 0 rgba(0,0,0,0.2)",
                     }}
                   >
                     PLAY
                   </span>
-
                 </div>
-
               </button>
-
             </Link>
           </motion.div>
 
@@ -285,24 +260,19 @@ export default function Home() {
               w-fit
             "
           >
-
             {/* ITEM 1 */}
             <div className="flex items-center gap-3">
-
               <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl">
                 ⏰
               </div>
 
               <div className="text-left leading-tight">
-                <p className="text-white text-xs font-bold">
-                  WAKTU PER ORANG
-                </p>
+                <p className="text-white text-xs font-bold">WAKTU PER ORANG</p>
 
                 <p className={`${luckiestGuy.className} text-white text-xl`}>
-                  50 DETIK
+                  60 DETIK
                 </p>
               </div>
-
             </div>
 
             {/* GARIS */}
@@ -310,21 +280,17 @@ export default function Home() {
 
             {/* ITEM 2 */}
             <div className="flex items-center gap-3">
-
               <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl">
                 👥
               </div>
 
               <div className="text-left leading-tight">
-                <p className="text-white text-xs font-bold">
-                  PAHLAWAN
-                </p>
+                <p className="text-white text-xs font-bold">PAHLAWAN</p>
 
                 <p className={`${luckiestGuy.className} text-white text-xl`}>
-                  20
+                  25
                 </p>
               </div>
-
             </div>
 
             {/* GARIS */}
@@ -332,51 +298,60 @@ export default function Home() {
 
             {/* ITEM 3 */}
             <div className="flex items-center gap-3">
-
               <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-2xl">
                 🔀
               </div>
 
               <div className="text-left leading-tight">
-                <p className="text-white text-xs font-bold">
-                  URUTAN SOAL
-                </p>
+                <p className="text-white text-xs font-bold">URUTAN SOAL</p>
 
                 <p className={`${luckiestGuy.className} text-white text-lg`}>
                   ACAK
                 </p>
               </div>
-
             </div>
-
           </motion.div>
-
         </div>
 
+        {/* ================= CHARACTER ================= */}
         {/* ================= CHARACTER ================= */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="
-            absolute
-            bottom-6
-            left-4
-            lg:left-8
-            hidden
-            lg:block
-            z-20
-          "
+    absolute
+    bottom-6
+    left-4
+    lg:left-8
+    hidden
+    lg:block
+    z-20
+  "
         >
-          <Character
-            pose="happy"
-            scale={1.15}
-            side="left"
+          <motion.img
+            src="/khd_kartini.png"
+            alt="KHD Kartini"
+            className="w-[260px] lg:w-[340px] object-contain"
+            animate={{
+              y: [0, -12, 0], // gerakan naik turun lebih terasa
+              scale: 1.05, // sedikit hidup (opsional tapi bagus)
+            }}
+            transition={{
+              y: {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+              scale: {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }}
           />
         </motion.div>
-
       </div>
-
     </main>
   );
 }

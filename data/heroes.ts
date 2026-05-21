@@ -11,203 +11,288 @@ export const heroes: Hero[] = [
   {
     id: 1,
     name: "Ir. Soekarno",
-    image: "/soal/1.jpg",
+    image: "/soal/1.PNG",
     options: ["Mohammad Hatta", "Soekarno", "Sutan Sjahrir", "Tan Malaka"],
     answer: "Soekarno",
-    description: "Presiden pertama Indonesia dan proklamator kemerdekaan"
+    description: "Presiden pertama Indonesia dan proklamator kemerdekaan",
   },
   {
     id: 2,
     name: "R.A. Kartini",
-    image: "/soal/2.jpg",
-    options: ["Dewi Sartika", "Cut Nyak Dhien", "R.A. Kartini", "Maria Walanda Maramis"],
+    image: "/soal/2.PNG",
+    options: [
+      "Dewi Sartika",
+      "Cut Nyak Dhien",
+      "R.A. Kartini",
+      "Maria Walanda Maramis",
+    ],
     answer: "R.A. Kartini",
-    description: "Pahlawan emansipasi wanita Indonesia"
+    description: "Pahlawan emansipasi wanita Indonesia",
   },
   {
     id: 3,
     name: "Sultan Hasanuddin",
-    image: "/soal/3.jpg",
-    options: ["Sultan Hasanuddin", "Pangeran Antasari", "Sultan Baabullah", "Andi Pangerang Pettarani"],
+    image: "/soal/3.PNG",
+    options: [
+      "Sultan Hasanuddin",
+      "Pangeran Antasari",
+      "Sultan Baabullah",
+      "Andi Pangerang Pettarani",
+    ],
     answer: "Sultan Hasanuddin",
-    description: "Pahlawan dari Makassar yang melawan VOC"
+    description: "Pahlawan dari Makassar yang melawan VOC",
   },
   {
     id: 4,
     name: "Mohammad Hatta",
-    image: "/soal/4.jpg",
-    options: ["Achmad Soebardjo", "Mohammad Hatta", "Mohammad Yamin", "Agus Salim"],
+    image: "/soal/4.PNG",
+    options: [
+      "Achmad Soebardjo",
+      "Mohammad Hatta",
+      "Mohammad Yamin",
+      "Agus Salim",
+    ],
     answer: "Mohammad Hatta",
-    description: "Wakil Presiden pertama Indonesia"
+    description: "Wakil Presiden pertama Indonesia",
   },
   {
     id: 5,
     name: "Ki Hajar Dewantara",
-    image: "/soal/5.jpg",
-    options: ["Dr. Sutomo", "Ki Hajar Dewantara", "Wahid Hasyim", "Douwes Dekker"],
+    image: "/soal/5.PNG",
+    options: [
+      "Dr. Sutomo",
+      "Ki Hajar Dewantara",
+      "Wahid Hasyim",
+      "Douwes Dekker",
+    ],
     answer: "Ki Hajar Dewantara",
-    description: "Bapak Pendidikan Nasional Indonesia"
+    description: "Bapak Pendidikan Nasional Indonesia",
   },
   {
     id: 6,
     name: "Jenderal Sudirman",
-    image: "/soal/6.jpg",
-    options: ["Ahmad Yani", "Jenderal Sudirman", "Gatot Subroto", "Slamet Riyadi"],
+    image: "/soal/6.PNG",
+    options: [
+      "Ahmad Yani",
+      "Jenderal Sudirman",
+      "Gatot Subroto",
+      "Slamet Riyadi",
+    ],
     answer: "Jenderal Sudirman",
-    description: "Panglima besar TNI pertama"
+    description: "Panglima besar TNI pertama",
   },
   {
     id: 7,
     name: "Bung Tomo",
-    image: "/soal/7.jpg",
+    image: "/soal/7.PNG",
     options: ["Bung Tomo", "KH Hasyim Asy'ari", "Gubernur Suryo", "Moestopo"],
     answer: "Bung Tomo",
-    description: "Tokoh penting pertempuran Surabaya"
+    description: "Tokoh penting pertempuran Surabaya",
   },
   {
     id: 8,
     name: "Pattimura",
-    image: "/soal/8.jpg",
+    image: "/soal/8.PNG",
     options: ["Pattimura", "Sultan Hairun", "Johannes Leimena", "Silas Papare"],
     answer: "Pattimura",
-    description: "Pahlawan dari Maluku"
+    description: "Pahlawan dari Maluku",
   },
   {
     id: 9,
     name: "Tuanku Imam Bonjol",
-    image: "/soal/9.jpg",
-    options: ["Tuanku Imam Bonjol", "Pangeran Diponegoro", "Teuku Umar", "Sultan Mahmud Badaruddin II"],
+    image: "/soal/9.PNG",
+    options: [
+      "Tuanku Imam Bonjol",
+      "Pangeran Diponegoro",
+      "Teuku Umar",
+      "Sultan Mahmud Badaruddin II",
+    ],
     answer: "Tuanku Imam Bonjol",
-    description: "Pemimpin Perang Padri"
+    description: "Pemimpin Perang Padri",
   },
   {
     id: 10,
     name: "W.R. Supratman",
-    image: "/soal/10.jpg",
-    options: ["Ismail Marzuki", "Kusbini", "W.R. Supratman", "Cornel Simanjuntak"],
+    image: "/soal/10.PNG",
+    options: [
+      "Ismail Marzuki",
+      "Kusbini",
+      "W.R. Supratman",
+      "Cornel Simanjuntak",
+    ],
     answer: "W.R. Supratman",
-    description: "Pencipta lagu Indonesia Raya"
+    description: "Pencipta lagu Indonesia Raya",
   },
   {
     id: 11,
     name: "Cut Nyak Dhien",
-    image: "/soal/11.jpg",
-    options: ["Cut Nyak Meutia", "Cut Nyak Dhien", "Nyi Ageng Serang", "Martha Christina Tiahahu"],
+    image: "/soal/11.PNG",
+    options: [
+      "Cut Nyak Meutia",
+      "Cut Nyak Dhien",
+      "Nyi Ageng Serang",
+      "Martha Christina Tiahahu",
+    ],
     answer: "Cut Nyak Dhien",
-    description: "Pahlawan wanita dari Aceh"
+    description: "Pahlawan wanita dari Aceh",
   },
   {
     id: 12,
     name: "Tan Malaka",
-    image: "/soal/12.jpg",
+    image: "/soal/12.PNG",
     options: ["Sutan Sjahrir", "Tan Malaka", "Mohammad Natsir", "Musso"],
     answer: "Tan Malaka",
-    description: "Pejuang kemerdekaan dan tokoh pergerakan"
+    description: "Pejuang kemerdekaan dan tokoh pergerakan",
   },
   {
     id: 13,
     name: "Agus Salim",
-    image: "/soal/13.jpg",
-    options: ["Agus Salim", "Mohammad Roem", "Ali Sastroamidjojo", "Soemitro Djojohadikusumo"],
+    image: "/soal/13.PNG",
+    options: [
+      "Agus Salim",
+      "Mohammad Roem",
+      "Ali Sastroamidjojo",
+      "Soemitro Djojohadikusumo",
+    ],
     answer: "Agus Salim",
-    description: "Diplomat dan pejuang kemerdekaan Indonesia"
+    description: "Diplomat dan pejuang kemerdekaan Indonesia",
   },
   {
     id: 14,
     name: "Pangeran Diponegoro",
-    image: "/soal/14.jpg",
-    options: ["Pangeran Antasari", "Pangeran Diponegoro", "Sultan Ageng Tirtayasa", "Sultan Hamengkubuwono IX"],
+    image: "/soal/14.PNG",
+    options: [
+      "Pangeran Antasari",
+      "Pangeran Diponegoro",
+      "Sultan Ageng Tirtayasa",
+      "Sultan Hamengkubuwono IX",
+    ],
     answer: "Pangeran Diponegoro",
-    description: "Pemimpin Perang Jawa melawan Belanda"
+    description: "Pemimpin Perang Jawa melawan Belanda",
   },
   {
     id: 15,
     name: "KH Hasyim Asy'ari",
-    image: "/soal/15.jpg",
-    options: ["KH Ahmad Dahlan", "KH Hasyim Asy'ari", "KH Wahid Hasyim", "KH Bisri Syansuri"],
+    image: "/soal/15.PNG",
+    options: [
+      "KH Ahmad Dahlan",
+      "KH Hasyim Asy'ari",
+      "KH Wahid Hasyim",
+      "KH Bisri Syansuri",
+    ],
     answer: "KH Hasyim Asy'ari",
-    description: "Pendiri Nahdlatul Ulama"
+    description: "Pendiri Nahdlatul Ulama",
   },
   {
     id: 16,
     name: "KH Ahmad Dahlan",
-    image: "/soal/16.jpg",
-    options: ["KH Ahmad Dahlan", "H.O.S Cokroaminoto", "Buya Hamka", "KH Mas Mansyur"],
+    image: "/soal/16.PNG",
+    options: [
+      "KH Ahmad Dahlan",
+      "H.O.S Cokroaminoto",
+      "Buya Hamka",
+      "KH Mas Mansyur",
+    ],
     answer: "KH Ahmad Dahlan",
-    description: "Pendiri Muhammadiyah"
+    description: "Pendiri Muhammadiyah",
   },
   {
     id: 17,
     name: "Christina Martha Tiahahu",
-    image: "/soal/17.jpg",
-    options: ["Maria Walanda Maramis", "Christina Martha Tiahahu", "Christina Martha", "Malahayati"],
+    image: "/soal/17.PNG",
+    options: [
+      "Maria Walanda Maramis",
+      "Christina Martha Tiahahu",
+      "Christina Martha",
+      "Malahayati",
+    ],
     answer: "Christina Martha Tiahahu",
-    description: "Pahlawan wanita dari Maluku"
+    description: "Pahlawan wanita dari Maluku",
   },
   {
     id: 18,
     name: "I Gusti Ngurah Rai",
-    image: "/soal/18.jpg",
-    options: ["I Gusti Ngurah Rai", "I Gusti Ketut Jelantik", "Dewa Agung Istri Kanya", "I Gusti Nyoman Lempad"],
+    image: "/soal/18.PNG",
+    options: [
+      "I Gusti Ngurah Rai",
+      "I Gusti Ketut Jelantik",
+      "Dewa Agung Istri Kanya",
+      "I Gusti Nyoman Lempad",
+    ],
     answer: "I Gusti Ngurah Rai",
-    description: "Pahlawan Bali dalam perang Puputan Margarana"
+    description: "Pahlawan Bali dalam perang Puputan Margarana",
   },
   {
     id: 19,
     name: "Mohammad Yamin",
-    image: "/soal/19.jpg",
-    options: ["Mohammad Yamin", "Soepomo", "Amir Sjarifuddin", "Sugondo Djojopuspito"],
+    image: "/soal/19.PNG",
+    options: [
+      "Mohammad Yamin",
+      "Soepomo",
+      "Amir Sjarifuddin",
+      "Sugondo Djojopuspito",
+    ],
     answer: "Mohammad Yamin",
-    description: "Tokoh perumus Sumpah Pemuda"
+    description: "Tokoh perumus Sumpah Pemuda",
   },
   {
     id: 20,
     name: "Ahmad Yani",
-    image: "/soal/20.jpg",
+    image: "/soal/20.PNG",
     options: ["Gatot Soebroto", "Ahmad Yani", "Pierre Tendean", "Sudirman"],
     answer: "Ahmad Yani",
-    description: "Pahlawan Revolusi Indonesia"
+    description: "Pahlawan Revolusi Indonesia",
   },
   {
     id: 21,
     name: "Pangeran Antasari",
-    image: "/soal/21.jpg",
-    options: ["Sultan Agung", "Sultan Hasanuddin", "Pangeran Antasari", "Pangeran Diponegoro"],
+    image: "/soal/21.PNG",
+    options: [
+      "Sultan Agung",
+      "Sultan Hasanuddin",
+      "Pangeran Antasari",
+      "Pangeran Diponegoro",
+    ],
     answer: "Pangeran Antasari",
-    description: "Pahlawan dari Kalimantan Selatan"
+    description: "Pahlawan dari Kalimantan Selatan",
   },
   {
     id: 22,
     name: "Dewi Sartika",
-    image: "/soal/22.jpg",
+    image: "/soal/22.PNG",
     options: ["R.A. Kartini", "Dewi Sartika", "Siti Walidah", "Rasuna Said"],
     answer: "Dewi Sartika",
-    description: "Pelopor pendidikan wanita di Indonesia"
+    description: "Pelopor pendidikan wanita di Indonesia",
   },
   {
     id: 23,
     name: "Teuku Umar",
-    image: "/soal/23.jpg",
-    options: ["Teuku Umar", "Tuanku Imam Bonjol", "Sultan Hasanuddin", "Pattimura"],
+    image: "/soal/23.PNG",
+    options: [
+      "Teuku Umar",
+      "Tuanku Imam Bonjol",
+      "Sultan Hasanuddin",
+      "Pattimura",
+    ],
     answer: "Teuku Umar",
-    description: "Pahlawan perjuangan Aceh"
+    description: "Pahlawan perjuangan Aceh",
   },
   {
     id: 24,
     name: "Pierre Tendean",
-    image: "/soal/24.jpg",
+    image: "/soal/24.PNG",
     options: ["Ahmad Yani", "Pierre Tendean", "Katamso", "Sugiyono"],
     answer: "Pierre Tendean",
-    description: "Pahlawan Revolusi Indonesia"
+    description: "Pahlawan Revolusi Indonesia",
   },
   {
     id: 25,
     name: "Cut Meutia",
-    image: "/soal/25.jpg",
+    image: "/soal/25.PNG",
     options: ["Cut Nyak Dhien", "Cut Meutia", "Malahayati", "Dewi Sartika"],
     answer: "Cut Meutia",
-    description: "Pahlawan wanita dari Aceh"
-  }
+    description: "Pahlawan wanita dari Aceh",
+  },
 ];
 
 export const getRandomHeroes = (count: number): Hero[] => {
