@@ -11,7 +11,7 @@ export const heroes: Hero[] = [
   {
     id: 1,
     name: "Ir. Soekarno",
-    image: "/soal/1.PNG",
+    image: "/soal/1.png",
     options: ["Mohammad Hatta", "Soekarno", "Sutan Sjahrir", "Tan Malaka"],
     answer: "Soekarno",
     description: "Presiden pertama Indonesia dan proklamator kemerdekaan",
@@ -19,7 +19,7 @@ export const heroes: Hero[] = [
   {
     id: 2,
     name: "R.A. Kartini",
-    image: "/soal/2.PNG",
+    image: "/soal/2.png",
     options: [
       "Dewi Sartika",
       "Cut Nyak Dhien",
@@ -32,7 +32,7 @@ export const heroes: Hero[] = [
   {
     id: 3,
     name: "Sultan Hasanuddin",
-    image: "/soal/3.PNG",
+    image: "/soal/3.png",
     options: [
       "Sultan Hasanuddin",
       "Pangeran Antasari",
@@ -45,7 +45,7 @@ export const heroes: Hero[] = [
   {
     id: 4,
     name: "Mohammad Hatta",
-    image: "/soal/4.PNG",
+    image: "/soal/4.png",
     options: [
       "Achmad Soebardjo",
       "Mohammad Hatta",
@@ -58,7 +58,7 @@ export const heroes: Hero[] = [
   {
     id: 5,
     name: "Ki Hajar Dewantara",
-    image: "/soal/5.PNG",
+    image: "/soal/5.png",
     options: [
       "Dr. Sutomo",
       "Ki Hajar Dewantara",
@@ -71,7 +71,7 @@ export const heroes: Hero[] = [
   {
     id: 6,
     name: "Jenderal Sudirman",
-    image: "/soal/6.PNG",
+    image: "/soal/6.png",
     options: [
       "Ahmad Yani",
       "Jenderal Sudirman",
@@ -84,7 +84,7 @@ export const heroes: Hero[] = [
   {
     id: 7,
     name: "Bung Tomo",
-    image: "/soal/7.PNG",
+    image: "/soal/7.png",
     options: ["Bung Tomo", "KH Hasyim Asy'ari", "Gubernur Suryo", "Moestopo"],
     answer: "Bung Tomo",
     description: "Tokoh penting pertempuran Surabaya",
@@ -92,7 +92,7 @@ export const heroes: Hero[] = [
   {
     id: 8,
     name: "Pattimura",
-    image: "/soal/8.PNG",
+    image: "/soal/8.png",
     options: ["Pattimura", "Sultan Hairun", "Johannes Leimena", "Silas Papare"],
     answer: "Pattimura",
     description: "Pahlawan dari Maluku",
@@ -100,7 +100,7 @@ export const heroes: Hero[] = [
   {
     id: 9,
     name: "Tuanku Imam Bonjol",
-    image: "/soal/9.PNG",
+    image: "/soal/9.png",
     options: [
       "Tuanku Imam Bonjol",
       "Pangeran Diponegoro",
@@ -113,7 +113,7 @@ export const heroes: Hero[] = [
   {
     id: 10,
     name: "W.R. Supratman",
-    image: "/soal/10.PNG",
+    image: "/soal/10.png",
     options: [
       "Ismail Marzuki",
       "Kusbini",
@@ -126,7 +126,7 @@ export const heroes: Hero[] = [
   {
     id: 11,
     name: "Cut Nyak Dhien",
-    image: "/soal/11.PNG",
+    image: "/soal/11.png",
     options: [
       "Cut Nyak Meutia",
       "Cut Nyak Dhien",
@@ -139,7 +139,7 @@ export const heroes: Hero[] = [
   {
     id: 12,
     name: "Tan Malaka",
-    image: "/soal/12.PNG",
+    image: "/soal/12.png",
     options: ["Sutan Sjahrir", "Tan Malaka", "Mohammad Natsir", "Musso"],
     answer: "Tan Malaka",
     description: "Pejuang kemerdekaan dan tokoh pergerakan",
@@ -147,7 +147,7 @@ export const heroes: Hero[] = [
   {
     id: 13,
     name: "Agus Salim",
-    image: "/soal/13.PNG",
+    image: "/soal/13.png",
     options: [
       "Agus Salim",
       "Mohammad Roem",
@@ -160,7 +160,7 @@ export const heroes: Hero[] = [
   {
     id: 14,
     name: "Pangeran Diponegoro",
-    image: "/soal/14.PNG",
+    image: "/soal/14.png",
     options: [
       "Pangeran Antasari",
       "Pangeran Diponegoro",
@@ -173,7 +173,7 @@ export const heroes: Hero[] = [
   {
     id: 15,
     name: "KH Hasyim Asy'ari",
-    image: "/soal/15.PNG",
+    image: "/soal/15.png",
     options: [
       "KH Ahmad Dahlan",
       "KH Hasyim Asy'ari",
@@ -186,7 +186,7 @@ export const heroes: Hero[] = [
   {
     id: 16,
     name: "KH Ahmad Dahlan",
-    image: "/soal/16.PNG",
+    image: "/soal/16.png",
     options: [
       "KH Ahmad Dahlan",
       "H.O.S Cokroaminoto",
@@ -199,7 +199,7 @@ export const heroes: Hero[] = [
   {
     id: 17,
     name: "Christina Martha Tiahahu",
-    image: "/soal/17.PNG",
+    image: "/soal/17.png",
     options: [
       "Maria Walanda Maramis",
       "Christina Martha Tiahahu",
@@ -212,7 +212,7 @@ export const heroes: Hero[] = [
   {
     id: 18,
     name: "I Gusti Ngurah Rai",
-    image: "/soal/18.PNG",
+    image: "/soal/18.png",
     options: [
       "I Gusti Ngurah Rai",
       "I Gusti Ketut Jelantik",
@@ -225,7 +225,7 @@ export const heroes: Hero[] = [
   {
     id: 19,
     name: "Mohammad Yamin",
-    image: "/soal/19.PNG",
+    image: "/soal/19.png",
     options: [
       "Mohammad Yamin",
       "Soepomo",
@@ -238,7 +238,7 @@ export const heroes: Hero[] = [
   {
     id: 20,
     name: "Ahmad Yani",
-    image: "/soal/20.PNG",
+    image: "/soal/20.png",
     options: ["Gatot Soebroto", "Ahmad Yani", "Pierre Tendean", "Sudirman"],
     answer: "Ahmad Yani",
     description: "Pahlawan Revolusi Indonesia",
@@ -246,7 +246,7 @@ export const heroes: Hero[] = [
   {
     id: 21,
     name: "Pangeran Antasari",
-    image: "/soal/21.PNG",
+    image: "/soal/21.png",
     options: [
       "Sultan Agung",
       "Sultan Hasanuddin",
@@ -259,7 +259,7 @@ export const heroes: Hero[] = [
   {
     id: 22,
     name: "Dewi Sartika",
-    image: "/soal/22.PNG",
+    image: "/soal/22.png",
     options: ["R.A. Kartini", "Dewi Sartika", "Siti Walidah", "Rasuna Said"],
     answer: "Dewi Sartika",
     description: "Pelopor pendidikan wanita di Indonesia",
@@ -267,7 +267,7 @@ export const heroes: Hero[] = [
   {
     id: 23,
     name: "Teuku Umar",
-    image: "/soal/23.PNG",
+    image: "/soal/23.png",
     options: [
       "Teuku Umar",
       "Tuanku Imam Bonjol",
@@ -280,7 +280,7 @@ export const heroes: Hero[] = [
   {
     id: 24,
     name: "Pierre Tendean",
-    image: "/soal/24.PNG",
+    image: "/soal/24.png",
     options: ["Ahmad Yani", "Pierre Tendean", "Katamso", "Sugiyono"],
     answer: "Pierre Tendean",
     description: "Pahlawan Revolusi Indonesia",
@@ -288,7 +288,7 @@ export const heroes: Hero[] = [
   {
     id: 25,
     name: "Cut Meutia",
-    image: "/soal/25.PNG",
+    image: "/soal/25.png",
     options: ["Cut Nyak Dhien", "Cut Meutia", "Malahayati", "Dewi Sartika"],
     answer: "Cut Meutia",
     description: "Pahlawan wanita dari Aceh",
