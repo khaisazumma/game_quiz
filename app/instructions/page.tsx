@@ -27,10 +27,10 @@ export default function Instructions() {
   };
 
   const instructions = [
-    "Kamu akan diberikan 20 gambar pahlawan Indonesia",
+    "Kamu akan diberikan 25 gambar pahlawan Indonesia",
     "Pilih jawaban yang paling tepat dari 4 pilihan",
-    "Waktu menjawab adalah 50 detik per soal",
-    "Jika waktu habis soal akan lanjut otomatis",
+    "Waktu menjawab adalah 60 detik untuk semua soal",
+    "Jika waktu habis maka akan selesai otomatis",
     "Skor akhir akan ditampilkan di akhir game",
   ];
 

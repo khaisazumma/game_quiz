@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,6 +11,9 @@ import { useGame } from "@/context/GameContext";
 
 const TOTAL_TIME = 60;
 const ANSWER_OPTIONS = ["A", "B", "C", "D"];
+
+// 🔥 ATUR POSISI HEADER DI SINI
+const HEADER_OFFSET = "pt-4"; // ubah: pt-1 / pt-2 / pt-6
 
 export default function GamePage() {
   const router = useRouter();
@@ -38,7 +41,6 @@ export default function GamePage() {
 
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
 
-  // RESET SOAL (TANPA RESET TIMER)
   useEffect(() => {
     if (!currentHero) return;
 
@@ -54,7 +56,6 @@ export default function GamePage() {
     setFlash(false);
   }, [currentHero]);
 
-  // SOUND
   const playSound = (type: "click" | "correct" | "wrong") => {
     if (!soundEnabled) return;
 
@@ -64,7 +65,6 @@ export default function GamePage() {
     } catch {}
   };
 
-  // GLOBAL TIMER (60 detik untuk seluruh game)
   useEffect(() => {
     if (timeLeft <= 0) {
       router.push("/results");
@@ -80,7 +80,6 @@ export default function GamePage() {
     return () => clearTimeout(timer);
   }, [timeLeft, showResult, lockInput, router]);
 
-  // ANSWER
   const handleAnswerSelect = (answer: string) => {
     if (!currentHero || showResult || lockInput) return;
 
@@ -103,10 +102,13 @@ export default function GamePage() {
       }, 600);
     }
 
-    submitAnswer(answer, TOTAL_TIME - timeLeft);
+    const timeTaken = TOTAL_TIME - timeLeft;
+    const points = correct ? 10 : 0;
+
+    // kirim juga ke context lewat cara lama (tidak diubah struktur)
+    submitAnswer(answer, timeTaken);
   };
 
-  // NEXT QUESTION
   const handleNext = () => {
     playSound("click");
 
@@ -127,7 +129,9 @@ export default function GamePage() {
 
   return (
     <main
-      className={`min-h-screen relative overflow-hidden bg-game ${shake ? "shake" : ""}`}
+      className={`min-h-screen relative overflow-hidden bg-game ${
+        shake ? "shake" : ""
+      }`}
     >
       {/* FLASH EFFECT */}
       <AnimatePresence>
@@ -143,9 +147,11 @@ export default function GamePage() {
 
       <Confetti active={showConfetti && isCorrect} />
 
-      <div className="relative z-10 max-w-[900px] mx-auto px-2 py-2">
-        {/* HEADER */}
-        <div className="flex items-center justify-between mb-6 px-0 md:px-2 pt-3 w-full">
+      {/* ================= HEADER (MUDAH DI ATUR NAIK/TURUN) ================= */}
+      <div
+        className={`relative z-10 max-w-[900px] mx-auto px-2 ${HEADER_OFFSET}`}
+      >
+        <div className="flex items-center justify-between mb-3 w-full">
           <Link href="/">
             <ScoreBadge label="Back" value="←" />
           </Link>
@@ -160,9 +166,11 @@ export default function GamePage() {
             <ScoreBadge label="Waktu" value={`${Math.ceil(timeLeft)}s`} />
           </div>
         </div>
+      </div>
 
-        {/* MAIN */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
+      {/* ================= MAIN ================= */}
+      <div className="relative z-10 max-w-[900px] mx-auto px-2 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
           {/* IMAGE */}
           <div className="flex justify-center">
             <div className="w-[300px] h-[300px] rounded-2xl overflow-hidden border-4 border-[#8b6f47] shadow-xl bg-white flex items-center justify-center">
@@ -176,7 +184,7 @@ export default function GamePage() {
 
           {/* OPTIONS */}
           <div className="w-full max-w-[420px] mx-auto">
-            <h2 className="text-center text-orange-700 mb-4 text-2xl font-black">
+            <h2 className="text-center text-orange-700 mb-4 text-3xl font-black font-baloo2">
               SIAPAKAH AKU?
             </h2>
 
@@ -225,7 +233,7 @@ export default function GamePage() {
         </div>
       </div>
 
-      {/* SHAKE */}
+      {/* SHAKE ANIMATION */}
       <style jsx global>{`
         .shake {
           animation: shake 0.3s ease-in-out 3;

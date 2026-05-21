@@ -1,14 +1,19 @@
-'use client';
+"use client";
 
-import React, { createContext, useContext, useState, useCallback } from 'react';
-import { Hero, getRandomHeroes } from '@/data/heroes';
+import React, { createContext, useContext, useState, useCallback } from "react";
+import { Hero, getRandomHeroes } from "@/data/heroes";
 
 interface GameContextType {
   heroes: Hero[];
   currentIndex: number;
   score: number;
   timeSpent: number;
-  answers: { heroId: number; answer: string; correct: boolean; timeUsed: number }[];
+  answers: {
+    heroId: number;
+    answer: string;
+    correct: boolean;
+    timeUsed: number;
+  }[];
   initializeGame: () => void;
   nextQuestion: () => void;
   submitAnswer: (answer: string, timeUsed: number) => void;
@@ -42,43 +47,38 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   // NEXT QUESTION
   const nextQuestion = useCallback(() => {
-    setCurrentIndex((prev) =>
-      prev < heroes.length - 1 ? prev + 1 : prev
-    );
+    setCurrentIndex((prev) => (prev < heroes.length - 1 ? prev + 1 : prev));
   }, [heroes.length]);
 
-  // SUBMIT ANSWER (FIXED TOTAL SCORE LOGIC)
-const submitAnswer = useCallback(
-  (answer: string, timeUsed: number) => {
-    const currentHero = heroes[currentIndex];
-    if (!currentHero) return;
+  // SUBMIT ANSWER (FIXED: 10 POINT PER CORRECT ANSWER)
+  const submitAnswer = useCallback(
+    (answer: string, timeUsed: number) => {
+      const currentHero = heroes[currentIndex];
+      if (!currentHero) return;
 
-    const isCorrect = answer === currentHero.answer;
+      const isCorrect = answer === currentHero.answer;
 
-    // simpan jawaban
-    setAnswers((prev) => [
-      ...prev,
-      {
-        heroId: currentHero.id,
-        answer,
-        correct: isCorrect,
-        timeUsed,
-      },
-    ]);
+      // simpan jawaban
+      setAnswers((prev) => [
+        ...prev,
+        {
+          heroId: currentHero.id,
+          answer,
+          correct: isCorrect,
+          timeUsed,
+        },
+      ]);
 
-    // ===== FIXED SCORING: 25 soal = 100 poin =====
-    if (isCorrect) {
-      const pointsPerQuestion = 100 / 25; // = 4
+      // ===== FIXED SCORING =====
+      if (isCorrect) {
+        setScore((prev) => prev + 10);
+      }
 
-      setScore((prev) =>
-        Math.min(prev + pointsPerQuestion, 100)
-      );
-    }
+      setTimeSpent((prev) => prev + timeUsed);
+    },
+    [currentIndex, heroes],
+  );
 
-    setTimeSpent((prev) => prev + timeUsed);
-  },
-  [currentIndex, heroes]
-);
   // RESET GAME
   const resetGame = useCallback(() => {
     setHeroes([]);
@@ -113,7 +113,7 @@ const submitAnswer = useCallback(
 export function useGame() {
   const context = useContext(GameContext);
   if (!context) {
-    throw new Error('useGame must be used within GameProvider');
+    throw new Error("useGame must be used within GameProvider");
   }
   return context;
 }
